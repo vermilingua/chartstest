@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { ScatterChartComponent } from './scatter-chart/scatter-chart.component';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -21,7 +21,7 @@ import { ScatterChartComponent } from './scatter-chart/scatter-chart.component';
     AppComponent,
     LineChartComponent,
     NavComponent,
-    ScatterChartComponent
+    MapComponent
   ],
   imports: [
     BrowserModule,
