@@ -1,19 +1,30 @@
-.sidenav-container {
-  height: 100%;
+.toolbar-spacer{
+    flex: 1 1 auto;
 }
 
-.sidenav {
-  width: 200px;
+.margin-right{
+    margin-right: 10px;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+.logo{
+    margin-top: 10px;
+    max-width: 170px;
 }
 
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+@media only screen and (min-width: 600px) {
+    .logo{
+        margin-top: 20px;
+        max-width: 300px;
+    }
 }
+
+.mat-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: visible;
+    z-index: 1000;
+    background: whitesmoke;
+    color: #1e3d59;
+  }
 

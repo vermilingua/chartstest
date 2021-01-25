@@ -28,11 +28,11 @@ export class LineChartComponent {
 
 
   datasets: Array<any> = [
-    { data: this.x, label: 'min', steppedLine: true },
-    { data: this.y, label: 'mittel', steppedLine: true },
-    { data: this.z, label: 'max', steppedLine: true },
-    { data: this.u, label: 'median', steppedLine: true },
-    { data: this.v, label: 'q9', steppedLine: true },
+    { data: this.y, label: 'mittel', steppedLine: true, borderColor: "#c45850", fill: true },
+    { data: this.z, label: 'max', steppedLine: true, borderColor: "#c45850", fill: true },
+    { data: this.x, label: 'min', steppedLine: true, borderColor: "#c45850", fill: true },
+    { data: this.u, label: 'median', steppedLine: true, borderColor: "#c45850", fill: true },
+    { data: this.v, label: '90% quantil', steppedLine: true, borderColor: "#c45850", fill: true },
   ];
 
   lineChartData: ChartDataSets[] = this.datasets;/*[

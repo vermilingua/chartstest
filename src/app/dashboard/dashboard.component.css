@@ -1,0 +1,15 @@
+.mapclass{
+    width: 500px;
+    height: 500px;
+}
+
+.headspacing{
+    margin-top: 70px;
+   }
+
+.container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    align-items: flex-start;
+}
