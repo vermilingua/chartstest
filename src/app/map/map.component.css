@@ -1,4 +1,5 @@
-#mapdiv {
-    height: 400px;
-    width: 100%;
-  }
+.map-container {
+  width: inherit;
+  height: inherit;
+  z-index: 1;
+}

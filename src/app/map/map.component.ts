@@ -15,7 +15,7 @@ import OSM, {ATTRIBUTION} from 'ol/source/OSM';
 @Component({
   selector: 'app-ol-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.css']
 })
 export class MapComponent implements AfterViewInit {
 
