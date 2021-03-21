@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { SeriesDataService } from '../services/series-data.service'
@@ -6,9 +6,9 @@ import { Subscription } from 'rxjs';
 import { FuelPriceData } from '../interfaces/fuelprice-data'
 
 @Component({
-  selector: 'app-line-chart',
-  templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.css']
+  selector: 'app-line-chart-daily',
+  templateUrl: './line-chart-daily.component.html',
+  styleUrls: ['./line-chart-daily.component.css']
 })
 
 /*
@@ -16,61 +16,57 @@ https://stackoverflow.com/questions/50982006/display-date-label-in-axes-chart-js
 */
 
 
-export class LineChartComponent implements OnInit{
+export class LineChartDailyComponent {
 
   constructor(private service: SeriesDataService) {
 
   }
+  private city = "erlangen";
+  private x = []; 
 
   message: FuelPriceData;
   subscription: Subscription;
 
-  private x = [];
-  private y = [];
-  private z = [];
-  private u = [];
-  private v = [];
+  lineChartData: ChartDataSets[]; 
 
-  transform_series(series: any[]) {
-
+  transform_series(series) {
     let data = [];
-
-    if(series.length < 1){
-      return data;
-    }
-
     for (var i = 0; i < series.length; i++) {
-      
-       data.push({ x: new Date('1970-01-01 ' + series[i][0]), y: series[i][1] });
+      console.log(series[i][0]);
+      data.push({ x: new Date(series[i][0]), y: series[i][1] });
     }
-    data.push({ x: new Date('1970-01-01 21:00:00'), y: series[series.length - 1][1] });
-
     return data;
-  
+
   }
 
+  private mean = [];
+  private median = [];
+  private min = [];
+  private max = [];
+  private q9 = [];
+
   ngOnInit() {
+
     this.subscription = this.service.currentMessage.subscribe(message => {
-      console.log("subscribe");
-      console.log(message);
-      this.x = this.transform_series(message.min);
-      this.y = this.transform_series(message.mean);
-      this.z = this.transform_series(message.max);
-      this.u = this.transform_series(message.median);
-      this.v = this.transform_series(message.q9);
+
+      this.min = this.transform_series(message.d_min);
+      this.mean = this.transform_series(message.d_mean);
+      this.max = this.transform_series(message.d_max);
+      this.median = this.transform_series(message.d_median);
+      this.q9 = this.transform_series(message.d_q9);
 
       let datasets = [
-        { data: this.x, label: 'min', steppedLine: true },
-        { data: this.y, label: 'mittel', steppedLine: true },
-        { data: this.u, label: 'median', steppedLine: true },
-        { data: this.v, label: '90% quantil', steppedLine: true },
-        { data: this.z, label: 'max', steppedLine: true },
+        { data: this.min, label: 'min', steppedLine: true },
+        { data: this.mean, label: 'mittel', steppedLine: true },
+        { data: this.median, label: 'median', steppedLine: true },
+        { data: this.q9, label: '90% quantil', steppedLine: true },
+        { data: this.max, label: 'max', steppedLine: true },
       ];
 
       this.lineChartData = datasets;
 
     })
-  }
+  }  
 
   lineChartColors: Color[] = [
     {
@@ -96,11 +92,6 @@ export class LineChartComponent implements OnInit{
 
   ];
 
-
-  lineChartData: ChartDataSets[] = []/*[
-    { data: this.x, label: 'Crude oil prices', steppedLine: true },
-  ];*/
-
   lineChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -109,13 +100,11 @@ export class LineChartComponent implements OnInit{
         {
           type: 'time',
           time: {
-            unit: 'minute',
-            unitStepSize: 15,
+            unit: 'day',
+            unitStepSize: 1,
             displayFormats: {
-              minute: 'HH:mm'
-            },
-            min: new Date(1970, 0, 1, 8, 0, 0),
-            max: new Date(1970, 0, 1, 21, 0, 0)
+              minute: 'dd MM'
+            }
           }
         }
       ],

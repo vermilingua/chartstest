@@ -17,6 +17,8 @@ import { NavComponent } from './nav/nav.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatRadioModule} from '@angular/material/radio';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LineChartDailyComponent } from './line-chart-daily/line-chart-daily.component';
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LineChartComponent,
     MapComponent,
     NavComponent,
-    DashboardComponent
+    DashboardComponent,
+    LineChartDailyComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatMenuModule,
     MatRadioModule,
     BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

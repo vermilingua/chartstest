@@ -1,9 +1,37 @@
 <div class="headspacing"></div>
-<div class="container">
-    <div>
-<app-ol-map class="mapclass"></app-ol-map>
-</div>
-<div>
-<app-line-chart></app-line-chart>
-</div>
+<div class="x">Dies ist eine private Webseite. Sie dürfen die Seite nur nutzen, wenn Sie vom Betreiber einen Zugangscode erhalten haben.</div>
+<div class="x" *ngIf="access_okay">
+    <div class="container">
+        <div>
+            <div class="topspacer">
+                <h3>Übersicht der Tankstellen im Untersuchungsgebiet</h3>
+                <ul>
+                    <li>Stern mit Rand grün = günstigste, gelb = +1 Cent, orange =  +2 Cent, rot = +3 Cent, schwarz = +4 Cent  </li>
+                    <li>Dreieck mit Rand grün = +5 Cent, gelb = +6 Cent, orange =  +7 Cent, rot = +8 Cent, schwarz = +9 Cent  </li>
+                    <li>Raute rot: +10-14 Cent</li>
+                    <li>Raute schwarz: +15 Cent und mehr</li>
+                </ul>
+            </div>
+            <app-ol-map class="mapclass"></app-ol-map>
+        </div>
+        <div>
+            <div class="topspacer">
+                <h3>Durchschnittspreise im Tagesablauf im Untersuchungszeitraum letzte 14 Tage, 8-21h</h3>
+                <ul>
+                    <li>min/max: der niedrigste/höchste registrierte Preis zu dieser Uhrzeit.
+                    <li>mittel: der Mittelwert der zu diesem Zeitpunkt gemessenen Preise</li>
+                    <li>median: 50% der Tankstellen liegen über diesem Preis, 50% darunter</li>
+                    <li>90% quantil: 90% der Tankestellen haben einen niedrigeren Preis, 10% einen höheren.
+                </ul>
+            </div>
+            <app-line-chart class="chartclass"></app-line-chart>
+        </div>
+        <div>
+            <div class="topspacer">
+                <h3>Tagesdurschnitte im Untersuchungszeitraum letzte 14 Tage, 8-21h</h3>
+            </div>
+            <app-line-chart-daily class="chartclass"></app-line-chart-daily>
+        </div>
+    </div>
+
 </div>

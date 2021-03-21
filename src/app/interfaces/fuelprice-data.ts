@@ -1,0 +1,20 @@
+export interface FuelPriceData {
+    location: string,
+    lat: string,
+    lon: string,
+    fuel_type: string,
+    creation_date: string,
+    horizon: string,
+    mean: any[],
+    median: any[],
+    min: any[],
+    max: any[],
+    q9: any[],
+    liga: any[],
+    d_mean: any[],
+    d_median: any[],
+    d_min: any[],
+    d_max: any[],
+    d_q9: any[],
+  }
+  
